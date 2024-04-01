@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import Container from '@mui/material/Container';
 
 interface NavbarProps {
   links: { label: string; path: string }[];
@@ -8,18 +9,20 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ links }) => {
   return (
     <nav style={styles.navbar}>
-      <ul style={styles.navLinks}>
-        {links.map((link, index) => (
-          <li key={index} style={styles.navLink}>
-            <Link href={link.path} style={styles.link}>
-              {link.label}
-            </Link>
+      <Container>
+        <ul style={styles.navLinks}>
+          {links.map((link, index) => (
+            <li key={index} style={styles.navLink}>
+              <Link href={link.path} style={styles.link}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <FacebookIcon style={styles.fbIcon} />
           </li>
-        ))}
-        <li style={styles.navLink}>
-          <FacebookIcon style={styles.fbIcon} />
-        </li>
-      </ul>
+        </ul>
+      </Container>
     </nav>
   );
 };
@@ -27,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ links }) => {
 const styles = {
   navbar: {
     backgroundColor: '#E98A33',
-    padding: '10px 20px',
+    padding: '10px 0px',
   },
   navLinks: {
     listStyle: 'none',
