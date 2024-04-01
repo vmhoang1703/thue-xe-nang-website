@@ -1,5 +1,5 @@
-import Navbar from "./components/NavBar";
-import MainBar from "./components/MainBar";
+import Navbar from './components/NavBar';
+import MainBar from './components/MainBar';
 
 const links = [
   { label: 'Trang chủ', path: '/' },
