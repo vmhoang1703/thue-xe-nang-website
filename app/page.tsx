@@ -1,6 +1,7 @@
 import Navbar from './components/NavBar';
 import MainBar from './components/MainBar';
 import Header from './components/Header';
+import CarouselTop from './components/CarouselTop';
 
 const navLinks = [
   { label: 'Trang chủ', path: '/' },
@@ -17,12 +18,22 @@ const headerLinks = [
   { label: 'Tư vấn', path: '/'},
 ];
 
+const items = [
+  {
+      imageUrl: "/slider-01.jpg",
+  },
+  {
+      imageUrl: "/slider-02.jpg",
+  },
+];
+
 export default function Home() {
   return (
     <main>
       <Navbar links={navLinks} />
       <MainBar />
       <Header links={headerLinks}/>
+      <CarouselTop items={items} />
     </main>
   );
 }

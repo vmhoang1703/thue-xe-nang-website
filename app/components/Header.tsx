@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
 const styles = {
     header: {
       backgroundColor: '#E98A33',
-      padding: '15px 0px',
+      padding: '20px 0px',
     },
     headerLinks: {
       listStyle: 'none',
