@@ -88,7 +88,7 @@ const MainBar = () => {
 const styles = {
   mainbar: {
     backgroundColor: '#F5F3F3',
-    padding: '30px'
+    padding: '35px'
   },
   container: {
     display: 'flex',
