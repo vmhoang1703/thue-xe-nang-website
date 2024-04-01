@@ -47,7 +47,7 @@ const MainBar = () => {
     <div>
       <AppBar position='static' sx={styles.mainbar}>
         <Container maxWidth='xl' sx={styles.container}>
-          <Image src={'/logo.png'} alt={'Logo Image'} width={270} height={75} priority/>
+          <Image src={'/logo.png'} alt={'Logo Image'} width={250} height={70} priority/>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -88,7 +88,7 @@ const MainBar = () => {
 const styles = {
   mainbar: {
     backgroundColor: '#F5F3F3',
-    padding: '35px'
+    padding: '30px'
   },
   container: {
     display: 'flex',

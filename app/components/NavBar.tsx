@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ links }) => {
 const styles = {
   navbar: {
     backgroundColor: '#E98A33',
-    padding: '10px 0px',
+    padding: '7px 0px',
   },
   navLinks: {
     listStyle: 'none',
