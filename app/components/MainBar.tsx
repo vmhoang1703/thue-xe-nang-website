@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

@@ -1,7 +1,7 @@
 "use client";
 
 import Carousel from 'react-material-ui-carousel';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 interface CarouselItem {
     imageUrl: string;
@@ -22,7 +22,7 @@ const CarouselTop: React.FC<CarouselTopProps> = ({ items }) => {
 const CarouselItem: React.FC<{ item: CarouselItem }> = ({ item }) => {
     return (
         <div>
-            <Image src={item.imageUrl} alt="Carousel Item" width={400} height={200} layout="responsive"  />
+            <Image src={item.imageUrl} alt="Carousel Item" width={400} height={200} layout="responsive" priority />
         </div>
     );
 }
