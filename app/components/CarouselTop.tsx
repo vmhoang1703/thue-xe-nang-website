@@ -1,30 +1,22 @@
-"use client";
+'use client';
 
+import { type FC } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import Image from "next/legacy/image";
 
-interface CarouselItem {
-    imageUrl: string;
-}
+import CarouselItem from './CarouselItem';
 
 interface CarouselTopProps {
-    items: CarouselItem[];
+	items: { imageUrl: string }[];
 }
 
-const CarouselTop: React.FC<CarouselTopProps> = ({ items }) => {
-    return (
-        <Carousel>
-            {items.map((item, i) => <CarouselItem key={i} item={item} />)}
-        </Carousel>
-    );
-}
-
-const CarouselItem: React.FC<{ item: CarouselItem }> = ({ item }) => {
-    return (
-        <div>
-            <Image src={item.imageUrl} alt="Carousel Item" width={400} height={200} layout="responsive" priority />
-        </div>
-    );
-}
+const CarouselTop: FC<CarouselTopProps> = ({ items }) => {
+	return (
+		<Carousel>
+			{items.map((item, i) => (
+				<CarouselItem key={i} item={item} />
+			))}
+		</Carousel>
+	);
+};
 
 export default CarouselTop;
