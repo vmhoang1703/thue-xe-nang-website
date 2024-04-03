@@ -3,7 +3,6 @@
 import { type FC } from 'react';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Container from '@mui/material/Container';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Link from 'next/link';
 
 interface NavbarProps {
@@ -11,17 +10,10 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ links }) => {
-	const isMobile = useMediaQuery('(max-width: 600px)');
-
 	return (
 		<nav style={styles.navbar}>
 			<Container maxWidth="xl">
-				<ul
-					style={{
-						...styles.navLinks,
-						justifyContent: isMobile ? 'center' : 'end',
-					}}
-				>
+				<ul style={styles.navLinks}>
 					{links.map((link, index) => (
 						<li key={index} style={styles.navLink}>
 							<Link href={link.path} style={styles.link}>

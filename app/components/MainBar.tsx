@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -47,47 +48,64 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const MainBar = () => {
-	const isMobile = useMediaQuery('(max-width:600px)');
+	const isMobile = useMediaQuery('(max-width:1100px)');
 
 	return (
 		<div>
 			<AppBar position="static" sx={styles.mainbar}>
-				<Container maxWidth="xl" sx={styles.container}>
-					<Image
-						src={'/logo.png'}
-						alt={'Logo Image'}
-						width={250}
-						height={70}
-						priority
-					/>
-					<Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<StyledInputBase
-							placeholder="Tìm kiếm..."
-							inputProps={{ 'aria-label': 'search' }}
-						/>
-					</Search>
-					<Box component="section" sx={styles.box}>
+				<Container
+					maxWidth="xl"
+					sx={{
+						...styles.container,
+						padding: isMobile ? '20px 0px' : '35px 0px',
+					}}
+				>
+					<Box sx={{ display: 'flex', alignItems: 'center' }}>
 						<Image
-							src={'/hotline.png'}
-							alt={'Hotline Icon'}
-							width={50}
-							height={50}
+							src={'/logo.png'}
+							alt={'Logo Image'}
+							width={isMobile ? 150 : 250}
+							height={isMobile ? 50 : 70}
+							priority
 						/>
-						<Box component="section" sx={styles.boxText}>
-							<p>HOTLINE tư vấn 24/7</p>
-							<p style={styles.textBottom}>0938.333.000 (Mr. Điển)</p>
-						</Box>
 					</Box>
-					<Box component="section" sx={styles.box}>
-						<Image src={'/map.png'} alt={'Map Icon'} width={50} height={50} />
-						<Box component="section" sx={styles.boxText}>
-							<p>Địa chỉ mua hàng</p>
-							<p style={styles.textBottom}>19A/2 KP 8A / Tân Biên</p>
-						</Box>
-					</Box>
+					{!isMobile && (
+						<Fragment>
+							<Search>
+								<SearchIconWrapper>
+									<SearchIcon />
+								</SearchIconWrapper>
+								<StyledInputBase
+									placeholder="Tìm kiếm..."
+									inputProps={{ 'aria-label': 'search' }}
+								/>
+							</Search>
+							<Box component="section" sx={styles.box}>
+								<Image
+									src={'/hotline.png'}
+									alt={'Hotline Icon'}
+									width={50}
+									height={50}
+								/>
+								<Box component="section" sx={styles.boxText}>
+									<p>HOTLINE tư vấn 24/7</p>
+									<p style={styles.textBottom}>0938.333.000 (Mr. Điển)</p>
+								</Box>
+							</Box>
+							<Box component="section" sx={styles.box}>
+								<Image
+									src={'/map.png'}
+									alt={'Map Icon'}
+									width={50}
+									height={50}
+								/>
+								<Box component="section" sx={styles.boxText}>
+									<p>Địa chỉ mua hàng</p>
+									<p style={styles.textBottom}>19A/2 KP 8A / Tân Biên</p>
+								</Box>
+							</Box>
+						</Fragment>
+					)}
 				</Container>
 			</AppBar>
 		</div>
@@ -97,7 +115,6 @@ const MainBar = () => {
 const styles = {
 	mainbar: {
 		backgroundColor: '#F5F3F3',
-		padding: '35px 0px',
 	},
 	container: {
 		display: 'flex',
