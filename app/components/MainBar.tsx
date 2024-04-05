@@ -48,7 +48,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const MainBar = () => {
-	const isMobile = useMediaQuery('(max-width:1100px)');
+	const isTabletMobile = useMediaQuery('(max-width:1100px)');
 
 	return (
 		<div>
@@ -57,19 +57,20 @@ const MainBar = () => {
 					maxWidth="xl"
 					sx={{
 						...styles.container,
-						padding: isMobile ? '20px 0px' : '35px 0px',
+						padding: isTabletMobile ? '20px 0px' : '35px 0px',
+						justifyContent: isTabletMobile ? 'center' : 'space-between',
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center' }}>
 						<Image
 							src={'/logo.png'}
 							alt={'Logo Image'}
-							width={isMobile ? 150 : 250}
-							height={isMobile ? 50 : 70}
+							width={isTabletMobile ? 150 : 250}
+							height={isTabletMobile ? 50 : 70}
 							priority
 						/>
 					</Box>
-					{!isMobile && (
+					{!isTabletMobile && (
 						<Fragment>
 							<Search>
 								<SearchIconWrapper>
@@ -119,7 +120,6 @@ const styles = {
 	container: {
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'space-between',
 	},
 	box: {
 		display: 'flex',
