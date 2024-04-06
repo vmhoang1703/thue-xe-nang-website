@@ -1,8 +1,11 @@
+import Divider from '@mui/material/Divider';
+
 import AboutCompany from './components/AboutCompany';
 import CarouselTop from './components/CarouselTop';
 import Header from './components/Header';
 import MainBar from './components/MainBar';
 import Navbar from './components/NavBar';
+import Service from './components/Service';
 
 const navLinks = [
 	{ label: 'Trang chủ', path: '/' },
@@ -28,6 +31,13 @@ const items = [
 	},
 ];
 
+const styles = {
+	divider: {
+		marginTop: '35px',
+		marginBottom: '35px',
+	},
+};
+
 export default function Home() {
 	return (
 		<main style={{ backgroundImage: 'url("/background.png")' }}>
@@ -36,6 +46,8 @@ export default function Home() {
 			<Header links={headerLinks} />
 			<CarouselTop items={items} />
 			<AboutCompany />
+			<Divider sx={styles.divider} />
+			<Service />
 		</main>
 	);
 }

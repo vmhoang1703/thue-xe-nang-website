@@ -45,9 +45,9 @@ const AboutCompany = () => {
 					</Box>
 					<Typography variant="body1" gutterBottom sx={styles.description}>
 						Thành lập từ năm 2003, Long Anh Phát là một trong những công ty CHO
-						THUÊ XE NÂNG ĐẨU TIÊN TẠI BÀ RỊA và đã có những bước đi vững chắc để
-						trở thành thương hiệu uy tín và được rất nhiều sự tin nhiệm trên thị
-						trường. Năm 2008, Công ty TNHH Long Anh Phát được xếp hạng năm trong
+						THUÊ XE NÂNG ĐẦU TIÊN TẠI BÀ RỊA và đã có những bước đi vững chắc để
+						trở thành thương hiệu uy tín và được rất nhiều sự tín nhiệm trên thị
+						trường. Năm 2008, Công Ty TNHH Long Anh Phát được xếp hạng nằm trong
 						top 500 doanh nghiệp lớn nhất Việt Nam do báo Vietnamnet bình chọn,
 						xếp hạng tín dụng AAA (2012) và A (2014).
 					</Typography>
@@ -58,6 +58,7 @@ const AboutCompany = () => {
 						alt={'forklift image'}
 						width={350}
 						height={250}
+						priority
 					/>
 				</Box>
 			</Box>
