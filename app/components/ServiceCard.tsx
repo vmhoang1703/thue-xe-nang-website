@@ -21,7 +21,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 	return (
 		<Card sx={{ maxWidth: 400 }}>
 			<CardActionArea>
-				<CardMedia component="img" height="170" image={imageUrl} alt="" />
+				<div className="card-image-container">
+					<CardMedia
+						component="img"
+						height="170"
+						image={imageUrl}
+						alt=""
+						className="card-image"
+					/>
+				</div>
 				<CardContent>
 					<p style={styles.title}>{title}</p>
 					<p style={styles.previewDescription}>{description}</p>
