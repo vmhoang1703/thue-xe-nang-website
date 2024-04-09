@@ -10,13 +10,13 @@ import Link from 'next/link';
 interface ServiceCardProps {
 	imageUrl: string;
 	title: string;
-	description: string;
+	shortDescription: string;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
 	imageUrl,
 	title,
-	description,
+	shortDescription,
 }) => {
 	return (
 		<Card sx={{ maxWidth: 400 }}>
@@ -32,7 +32,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 				</div>
 				<CardContent>
 					<p style={styles.title}>{title}</p>
-					<p style={styles.previewDescription}>{description}</p>
+					<p style={styles.previewDescription}>{shortDescription}</p>
 				</CardContent>
 			</CardActionArea>
 			<CardActions>

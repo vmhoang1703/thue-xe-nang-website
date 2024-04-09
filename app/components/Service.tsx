@@ -1,39 +1,29 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
+import { draftMode } from 'next/headers';
 
-import getAllServices from '../../utils/services-contentful';
+import { fetchServicePosts } from '../../contenful/servicePost';
 
 import SectionTitle from './SectionTitle';
 import ServiceCard from './ServiceCard';
 
-const Service = () => {
-	const [services, setServices] = useState([]);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const servicesData = await getAllServices();
-				setServices(servicesData);
-			} catch (error) {
-				console.error('Error fetching services:', error);
-			}
-		};
-
-		fetchData();
-	}, []);
+// eslint-disable-next-line @next/next/no-async-client-component
+const Service = async () => {
+	const servicePosts = await fetchServicePosts({
+		preview: draftMode().isEnabled,
+	});
 
 	return (
 		<Container sx={styles.container}>
 			<SectionTitle title="DỊCH VỤ CỦA CHÚNG TÔI" />
 			<div style={styles.serviceContainer}>
-				{services.map((service) => (
+				{servicePosts.map((servicePost) => (
 					<ServiceCard
-						key={service.sys.id}
-						imageUrl={service.fields.imageUrl.fields.file.url}
-						title={service.fields.title}
-						description={service.fields.shortDescription}
+						key={servicePost.slug}
+						imageUrl={
+							servicePost.imageUrl?.src || 'https://via.placeholder.com/150'
+						}
+						title={servicePost.title}
+						shortDescription={servicePost.shortDescription}
 					/>
 				))}
 			</div>
