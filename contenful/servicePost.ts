@@ -32,13 +32,8 @@ export function parseContentfulServicePost(
 	};
 }
 
-interface FetchServicePostsOptions {
-	preview: boolean;
-}
-export async function fetchServicePosts({
-	preview,
-}: FetchServicePostsOptions): Promise<ServicePost[]> {
-	const contentful = contentfulClient({ preview });
+export async function fetchServicePosts(): Promise<ServicePost[]> {
+	const contentful = contentfulClient();
 
 	const ServicePostsResult =
 		await contentful.getEntries<TypeServicePostSkeleton>({
@@ -59,9 +54,8 @@ interface FetchServicePostOptions {
 }
 export async function fetchServicePost({
 	slug,
-	preview,
 }: FetchServicePostOptions): Promise<ServicePost | null> {
-	const contentful = contentfulClient({ preview });
+	const contentful = contentfulClient();
 
 	const ServicePostsResult =
 		await contentful.getEntries<TypeServicePostSkeleton>({

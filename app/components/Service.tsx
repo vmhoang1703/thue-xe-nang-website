@@ -1,5 +1,4 @@
 import Container from '@mui/material/Container';
-import { draftMode } from 'next/headers';
 
 import { fetchServicePosts } from '../../contenful/servicePost';
 
@@ -8,9 +7,7 @@ import ServiceCard from './ServiceCard';
 
 // eslint-disable-next-line @next/next/no-async-client-component
 const Service = async () => {
-	const servicePosts = await fetchServicePosts({
-		preview: draftMode().isEnabled,
-	});
+	const servicePosts = await fetchServicePosts();
 
 	return (
 		<Container sx={styles.container}>
