@@ -8,12 +8,13 @@ import ServiceCard from './ServiceCard';
 // eslint-disable-next-line @next/next/no-async-client-component
 const Service = async () => {
 	const servicePosts = await fetchServicePosts();
+	const selectedServicePosts = servicePosts.slice(0, 4);
 
 	return (
 		<Container sx={styles.container}>
 			<SectionTitle title="DỊCH VỤ CỦA CHÚNG TÔI" />
 			<div style={styles.serviceContainer}>
-				{servicePosts.map((servicePost) => (
+				{selectedServicePosts.map((servicePost) => (
 					<ServiceCard
 						key={servicePost.slug}
 						imageUrl={

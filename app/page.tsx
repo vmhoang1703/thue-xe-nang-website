@@ -5,6 +5,7 @@ import CarouselTop from './components/CarouselTop';
 import Header from './components/Header';
 import MainBar from './components/MainBar';
 import Navbar from './components/NavBar';
+import News from './components/News';
 import Service from './components/Service';
 
 const navLinks = [
@@ -48,6 +49,7 @@ export default function Home() {
 			<AboutCompany />
 			<Divider sx={styles.divider} />
 			<Service />
+			<News />
 		</main>
 	);
 }
