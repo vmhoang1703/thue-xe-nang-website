@@ -34,7 +34,7 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		flexDirection: 'column',
-		paddingTop: '40px',
+		paddingTop: '50px',
 		paddingBottom: '40px',
 	},
 	title: {

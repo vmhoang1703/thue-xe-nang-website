@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
 import FeaturesBox from './FeatureBox';
@@ -43,14 +42,14 @@ const AboutCompany = () => {
 							<p style={styles.name}>LONG ANH PHÁT</p>
 						</Box>
 					</Box>
-					<Typography variant="body1" gutterBottom sx={styles.description}>
+					<p style={styles.description}>
 						Thành lập từ năm 2003, Long Anh Phát là một trong những công ty CHO
 						THUÊ XE NÂNG ĐẦU TIÊN TẠI BÀ RỊA và đã có những bước đi vững chắc để
 						trở thành thương hiệu uy tín và được rất nhiều sự tín nhiệm trên thị
 						trường. Năm 2008, Công Ty TNHH Long Anh Phát được xếp hạng nằm trong
 						top 500 doanh nghiệp lớn nhất Việt Nam do báo Vietnamnet bình chọn,
 						xếp hạng tín dụng AAA (2012) và A (2014).
-					</Typography>
+					</p>
 				</Box>
 				<Box sx={styles.rightBox}>
 					<Image
@@ -70,6 +69,7 @@ const AboutCompany = () => {
 const styles = {
 	container: {
 		marginTop: '85px',
+		paddingBottom: '50px',
 	},
 	bigBox: {
 		display: 'flex',
@@ -105,8 +105,9 @@ const styles = {
 	},
 	description: {
 		fontSize: '1.1rem',
+		fontWeight: 550,
 		marginTop: '25px',
-		textAlign: 'justify',
+		textAlign: 'justify' as never,
 	},
 };
 

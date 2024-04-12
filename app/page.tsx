@@ -6,6 +6,7 @@ import Header from './components/Header';
 import MainBar from './components/MainBar';
 import Navbar from './components/NavBar';
 import News from './components/News';
+import Partner from './components/Partner';
 import Service from './components/Service';
 
 const navLinks = [
@@ -32,12 +33,13 @@ const items = [
 	},
 ];
 
-const styles = {
-	divider: {
-		marginTop: '35px',
-		marginBottom: '35px',
-	},
-};
+const logos = [
+	{ src: '/masan.png', alt: 'Massan Logo' },
+	{ src: '/ajinomoto.png', alt: 'Ajinomoto Logo' },
+	{ src: '/logo.png', alt: 'Long Anh Phat Logo' },
+	{ src: '/tienphat.png', alt: 'Tien Phat Logo' },
+	{ src: '/thaco.png', alt: 'Thaco Logo' },
+];
 
 export default function Home() {
 	return (
@@ -47,9 +49,11 @@ export default function Home() {
 			<Header links={headerLinks} />
 			<CarouselTop items={items} />
 			<AboutCompany />
-			<Divider sx={styles.divider} />
+			<Divider />
 			<Service />
 			<News />
+			<Divider />
+			<Partner logos={logos} />
 		</main>
 	);
 }

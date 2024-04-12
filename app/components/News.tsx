@@ -30,8 +30,7 @@ const News = async () => {
 const styles = {
 	container: {
 		backgroundColor: '#fff',
-		marginBottom: '50px',
-		paddingBottom: '40px',
+		paddingBottom: '50px',
 	},
 	newsContainer: {
 		display: 'flex',

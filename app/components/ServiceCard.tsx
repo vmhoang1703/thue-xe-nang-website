@@ -5,7 +5,10 @@ import CardActionArea from '@mui/material/CardActionArea';
 // import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { Montserrat } from 'next/font/google';
 import Link from 'next/link';
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 interface ServiceCardProps {
 	imageUrl: string;
@@ -19,7 +22,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 	shortDescription,
 }) => {
 	return (
-		<Card sx={{ maxWidth: 400 }}>
+		<Card sx={styles.card}>
 			<Link href={'/dich-vu'} style={styles.link}>
 				<CardActionArea>
 					<div className="card-image-container">
@@ -32,34 +35,45 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 						/>
 					</div>
 					<CardContent>
-						<p style={styles.title}>{title}</p>
-						<p style={styles.previewDescription}>{shortDescription}</p>
+						<p
+							style={{
+								...styles.title,
+								fontFamily: montserrat.style.fontFamily,
+							}}
+						>
+							{title}
+						</p>
+						<p
+							style={{
+								...styles.previewDescription,
+								fontFamily: montserrat.style.fontFamily,
+							}}
+						>
+							{shortDescription}
+						</p>
 					</CardContent>
 				</CardActionArea>
-				{/* <CardActions>
-				<Link href={'/dich-vu'}>
-					<Button size="small" color="primary">
-						Xem chi tiết
-					</Button>
-				</Link>
-			</CardActions> */}
 			</Link>
 		</Card>
 	);
 };
 
 const styles = {
+	card: {
+		maxWidth: '450px',
+	},
 	link: { textDecoration: 'none', color: '#000' },
 	title: {
 		color: '#E98A33',
-		fontSize: '1.4rem',
+		fontSize: '1.2rem',
 		fontWeight: 600,
 	},
 	previewDescription: {
 		color: '#000000',
 		fontSize: '1rem',
-		fontWeight: 300,
+		fontWeight: 400,
 		marginTop: '15px',
+		textAlign: 'justify' as never,
 	},
 };
 

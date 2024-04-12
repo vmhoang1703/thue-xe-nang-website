@@ -8,9 +8,12 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
+import { Montserrat } from 'next/font/google';
 import Link from 'next/link';
 
 import BoxDate from './BoxDate';
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 interface NewsCardProps {
 	imageUrl: string;
@@ -50,7 +53,14 @@ const NewsCard: FC<NewsCardProps> = ({
 					</Box>
 					<Box sx={styles.contentContainer}>
 						<Box>
-							<p style={styles.title}>{title}</p>
+							<p
+								style={{
+									...styles.title,
+									fontFamily: montserrat.style.fontFamily,
+								}}
+							>
+								{title}
+							</p>
 							<ThemeProvider
 								theme={{
 									palette: {
@@ -63,7 +73,14 @@ const NewsCard: FC<NewsCardProps> = ({
 							>
 								<Box sx={styles.titleUnderline} />
 							</ThemeProvider>
-							<p style={styles.shortDescription}>{shortDescription}</p>
+							<p
+								style={{
+									...styles.previewDescription,
+									fontFamily: montserrat.style.fontFamily,
+								}}
+							>
+								{shortDescription}
+							</p>
 						</Box>
 					</Box>
 				</CardActionArea>
@@ -79,13 +96,17 @@ const styles = {
 		padding: '20px 20px 20px 45px',
 		width: '350px',
 		height: '200px',
-		textAlign: 'justify',
 		display: 'flex',
 		alignItems: 'center',
 		position: 'relative',
 	},
-	title: { fontSize: '20px', fontWeight: '550' },
-	shortDescription: { fontSize: '14px', marginTop: '10px' },
+	title: { fontSize: '1.2rem', fontWeight: 600 },
+	previewDescription: {
+		fontSize: '1rem',
+		marginTop: '10px',
+		textAlign: 'justify' as never,
+		fontWeight: 400,
+	},
 	titleUnderline: {
 		marginTop: '20px',
 		width: 40,

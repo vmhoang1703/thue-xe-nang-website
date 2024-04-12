@@ -11,7 +11,7 @@ const Service = async () => {
 	const selectedServicePosts = servicePosts.slice(0, 4);
 
 	return (
-		<Container sx={styles.container}>
+		<Container maxWidth="xl" sx={styles.container}>
 			<SectionTitle title="DỊCH VỤ CỦA CHÚNG TÔI" />
 			<div style={styles.serviceContainer}>
 				{selectedServicePosts.map((servicePost) => (
@@ -32,15 +32,14 @@ const Service = async () => {
 const styles = {
 	container: {
 		backgroundColor: '#F7F7F7',
-		marginBottom: '50px',
-		paddingBottom: '40px',
+		paddingBottom: '50px',
 	},
 	serviceContainer: {
 		display: 'flex',
 		justifyContent: 'center',
 		gap: '50px',
 		flexWrap: 'wrap' as never,
-		maxWidth: '900px',
+		maxWidth: '1000px',
 		margin: '0 auto',
 	},
 };
