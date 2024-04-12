@@ -1,26 +1,51 @@
-import Container from '@mui/material/Container';
+'use client';
 
-import { fetchServicePosts } from '../../contenful/servicePost';
+import { useEffect, useState } from 'react';
+import Container from '@mui/material/Container';
 
 import SectionTitle from './SectionTitle';
 import ServiceCard from './ServiceCard';
 
-// eslint-disable-next-line @next/next/no-async-client-component
-const Service = async () => {
-	const servicePosts = await fetchServicePosts();
-	const selectedServicePosts = servicePosts.slice(0, 4);
+interface ServicePost {
+	title: string;
+	slug: string;
+	imageUrl: string;
+	shortDescription: string;
+}
+
+const Service = () => {
+	const [servicePosts, setServicePosts] = useState<ServicePost[]>([]);
+
+	useEffect(() => {
+		const fetchServicePosts = async () => {
+			try {
+				const response = await fetch(
+					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services`,
+				);
+				if (response.status == 200) {
+					const data = await response.json();
+					setServicePosts(data);
+				} else {
+					throw new Error('Failed to fetch service posts');
+				}
+			} catch (error) {
+				console.error('Error fetching service posts:', error);
+			}
+		};
+
+		fetchServicePosts();
+	}, []);
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
 			<SectionTitle title="DỊCH VỤ CỦA CHÚNG TÔI" />
 			<div style={styles.serviceContainer}>
-				{selectedServicePosts.map((servicePost) => (
+				{servicePosts.map((servicePost) => (
 					<ServiceCard
 						key={servicePost.slug}
-						imageUrl={
-							servicePost.imageUrl?.src || 'https://via.placeholder.com/150'
-						}
 						title={servicePost.title}
+						slug={servicePost.slug}
+						imageUrl={servicePost.imageUrl || 'https://via.placeholder.com/150'}
 						shortDescription={servicePost.shortDescription}
 					/>
 				))}

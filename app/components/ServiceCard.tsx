@@ -11,19 +11,21 @@ import Link from 'next/link';
 const montserrat = Montserrat({ subsets: ['latin'] });
 
 interface ServiceCardProps {
-	imageUrl: string;
 	title: string;
+	slug: string;
+	imageUrl: string;
 	shortDescription: string;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
-	imageUrl,
 	title,
+	slug,
+	imageUrl,
 	shortDescription,
 }) => {
 	return (
 		<Card sx={styles.card}>
-			<Link href={'/dich-vu'} style={styles.link}>
+			<Link href={`/dich-vu/${slug}`} style={styles.link}>
 				<CardActionArea>
 					<div className="card-image-container">
 						<CardMedia

@@ -29,7 +29,6 @@ const styles = {
 	featureBoxs: {
 		display: 'flex',
 		justifyContent: 'space-between',
-		marginBottom: '25px',
 		marginTop: '45px',
 	},
 	paper: {

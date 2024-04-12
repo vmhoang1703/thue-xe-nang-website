@@ -16,15 +16,15 @@ import BoxDate from './BoxDate';
 const montserrat = Montserrat({ subsets: ['latin'] });
 
 interface NewsCardProps {
-	imageUrl: string;
 	title: string;
+	imageUrl: string;
 	shortDescription: string;
 	createdAt: string;
 }
 
 const NewsCard: FC<NewsCardProps> = ({
-	imageUrl,
 	title,
+	imageUrl,
 	shortDescription,
 	createdAt,
 }) => {
@@ -119,7 +119,7 @@ const styles = {
 		flexDirection: 'column',
 		position: 'absolute',
 		top: '17%',
-		left: '36.5%',
+		left: '36.3%',
 		transform: 'translate(-50%, -50%)',
 		zIndex: 1,
 	},

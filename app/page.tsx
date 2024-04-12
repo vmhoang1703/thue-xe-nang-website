@@ -1,4 +1,5 @@
 import Divider from '@mui/material/Divider';
+import type { Metadata } from 'next';
 
 import AboutCompany from './components/AboutCompany';
 import CarouselTop from './components/CarouselTop';
@@ -8,6 +9,12 @@ import Navbar from './components/NavBar';
 import News from './components/News';
 import Partner from './components/Partner';
 import Service from './components/Service';
+
+export const metadata: Metadata = {
+	title: 'Thuê xe nâng Bà Rịa - Long Anh Phát',
+	description:
+		'Chuyên thuê xe nâng tại Bà Rịa. Cam kết uy tín và chuyên nghiệp nhất | L.Hệ [ 0938.333.000 A.Điển ]',
+};
 
 const navLinks = [
 	{ label: 'Trang chủ', path: '/' },
