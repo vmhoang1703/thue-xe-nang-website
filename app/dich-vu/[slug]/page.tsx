@@ -35,7 +35,7 @@ export async function generateMetadata({
 	params: { slug: string };
 }): Promise<Metadata> {
 	const response = await fetch(
-		`http://localhost:5000/api/services/${params.slug}`,
+		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${params.slug}`,
 	);
 	const servicePost: ServicePost = await response.json();
 
