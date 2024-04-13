@@ -1,4 +1,7 @@
-import { type FC } from 'react';
+'use client';
+
+import type { FC } from 'react';
+import { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Link from 'next/link';
 
@@ -7,8 +10,35 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ links }) => {
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollTop =
+				window.pageYOffset || document.documentElement.scrollTop;
+			setIsScrolled(scrollTop > 200);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
 	return (
-		<header style={styles.header}>
+		<header
+			style={{
+				...styles.header,
+				...(isScrolled
+					? {
+							position: 'fixed',
+							top: 0,
+							left: 0,
+							right: 0,
+							zIndex: 1000,
+							boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+						}
+					: {}),
+			}}
+		>
 			<Container maxWidth="xl">
 				<ul style={styles.headerLinks}>
 					{links.map((link, index) => (
