@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import DetailPost from '../../components/DetailPost';
 import MainBar from '../../components/MainBar';
 
-interface ServicePost {
+interface News {
 	slug: string;
 	imageUrl: string;
 	title: string;
@@ -15,20 +15,20 @@ interface ServicePost {
 	};
 }
 
-export default async function DetailServicePostPage({
+export default async function DetailNewsPage({
 	params,
 }: {
 	params: { slug: string };
 }) {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${params.slug}`,
+		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${params.slug}`,
 	);
-	const servicePost: ServicePost = await response.json();
+	const news: News = await response.json();
 
 	return (
 		<main>
 			<MainBar />
-			<DetailPost post={servicePost} />
+			<DetailPost post={news} />
 		</main>
 	);
 }
@@ -39,13 +39,13 @@ export async function generateMetadata({
 	params: { slug: string };
 }): Promise<Metadata> {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${params.slug}`,
+		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${params.slug}`,
 	);
-	const servicePost: ServicePost = await response.json();
+	const news: News = await response.json();
 
 	return {
-		title: servicePost.metadata.title,
-		description: servicePost.metadata.description,
-		keywords: servicePost.metadata.keywords,
+		title: news.metadata.title,
+		description: news.metadata.description,
+		keywords: news.metadata.keywords,
 	};
 }

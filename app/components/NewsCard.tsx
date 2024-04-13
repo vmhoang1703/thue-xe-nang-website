@@ -17,6 +17,7 @@ const montserrat = Montserrat({ subsets: ['latin'] });
 
 interface NewsCardProps {
 	title: string;
+	slug: string;
 	imageUrl: string;
 	shortDescription: string;
 	createdAt: string;
@@ -24,6 +25,7 @@ interface NewsCardProps {
 
 const NewsCard: FC<NewsCardProps> = ({
 	title,
+	slug,
 	imageUrl,
 	shortDescription,
 	createdAt,
@@ -35,7 +37,7 @@ const NewsCard: FC<NewsCardProps> = ({
 
 	return (
 		<Card sx={{ maxWidth: 550 }}>
-			<Link href={'/dich-vu'} style={styles.link}>
+			<Link href={`/tin-tuc/${slug}`} style={styles.link}>
 				<CardActionArea sx={styles.card}>
 					<div className="card-image-container" style={{ maxWidth: '200px' }}>
 						<CardMedia

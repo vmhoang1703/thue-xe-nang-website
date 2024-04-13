@@ -44,8 +44,9 @@ const News = () => {
 				{news.map((news) => (
 					<NewsCard
 						key={news.slug}
-						imageUrl={news.imageUrl || 'https://via.placeholder.com/150'}
 						title={news.title}
+						slug={news.slug}
+						imageUrl={news.imageUrl || 'https://via.placeholder.com/150'}
 						shortDescription={news.shortDescription}
 						createdAt={news.createdAt}
 					/>

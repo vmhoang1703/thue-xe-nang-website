@@ -37,3 +37,4 @@ next-env.d.ts
 
 # api
 /api/node_modules
+/api/.env
