@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 
 import AboutCompany from './components/AboutCompany';
 import CarouselTop from './components/CarouselTop';
+import ConsultingForm from './components/ConsultingForm';
 import Header from './components/Header';
 import MainBar from './components/MainBar';
 import Navbar from './components/NavBar';
@@ -61,6 +62,7 @@ export default function Home() {
 			<News />
 			<Divider />
 			<Partner logos={logos} />
+			<ConsultingForm />
 		</main>
 	);
 }

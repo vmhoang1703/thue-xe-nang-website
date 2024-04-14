@@ -34,7 +34,7 @@ const Header: FC<HeaderProps> = ({ links }) => {
 							left: 0,
 							right: 0,
 							zIndex: 1000,
-							boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+							boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
 						}
 					: {}),
 			}}
