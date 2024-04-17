@@ -24,7 +24,6 @@ const Service = () => {
 				);
 				if (response.status == 200) {
 					const data = await response.json();
-					console.log(data);
 					setServicePosts(data);
 				} else {
 					throw new Error('Failed to fetch service posts');

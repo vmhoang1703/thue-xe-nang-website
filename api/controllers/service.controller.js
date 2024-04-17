@@ -11,8 +11,8 @@ exports.createService = async (req, res, next) => {
 
 exports.getAllServices = async (req, res, next) => {
 	try {
-		// const services = await Service.find();
-		res.json('hello');
+		const services = await Service.find();
+		res.json(services);
 	} catch (err) {
 		next(err);
 	}
