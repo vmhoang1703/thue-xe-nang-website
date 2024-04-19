@@ -44,8 +44,8 @@ const ScrollToTopButton = () => {
 const styles = {
 	button: {
 		position: 'fixed' as const,
-		bottom: 16,
-		right: 16,
+		bottom: 30,
+		right: 15,
 		zIndex: 99,
 		cursor: 'pointer',
 	},
