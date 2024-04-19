@@ -14,7 +14,7 @@ const ConsultingForm = () => {
 		email: '',
 		companyName: '',
 		phoneNumber: '',
-		note: '',
+		requirement: '',
 	});
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,33 +25,36 @@ const ConsultingForm = () => {
 		}));
 	};
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/consult`, {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	body: JSON.stringify(formData),
-		// })
-		// 	.then((response) => {
-		// 		if (response.status == 200) {
-		// 			setFormData({
-		// 				name: '',
-		// 				email: '',
-		// 				companyName: '',
-		// 				phoneNumber: '',
-		// 				note: '',
-		// 			});
-		// 			alert('Gửi form thành công!');
-		// 		} else {
-		// 			alert('Lỗi! Vui lòng thử lại');
-		// 		}
-		// 	})
-		// 	.catch((error) => {
-		// 		console.error('Error submitting form:', error);
-		// 		alert('Lỗi! Vui lòng thử lại');
-		// 	});
+
+		try {
+			const response = await fetch(
+				`${process.env.NEXT_PUBLIC_API_ENDPOINT}/send-email`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(formData),
+				},
+			);
+
+			if (response.status == 200) {
+				alert('Gửi yêu cầu thành công!');
+				setFormData({
+					name: '',
+					email: '',
+					companyName: '',
+					phoneNumber: '',
+					requirement: '',
+				});
+			} else {
+				alert('Gửi yêu cầu thất bại! Vui lòng thử lại');
+			}
+		} catch (error) {
+			alert('Gửi yêu cầu thất bại! Vui lòng thử lại');
+		}
 	};
 
 	return (
@@ -109,17 +112,17 @@ const ConsultingForm = () => {
 							fullWidth
 							id="outlined-multiline-flexible"
 							margin="normal"
-							label="Ghi chú"
+							label="Yêu cầu"
 							multiline
 							minRows={5}
 							variant="outlined"
 							InputProps={{ sx: { backgroundColor: 'white' } }}
-							name="note"
-							value={formData.note}
+							name="requirement"
+							value={formData.requirement}
 							onChange={handleInputChange}
 						/>
 						<Button type="submit" variant="contained" color="error">
-							Tư vấn tôi
+							Gửi yêu cầu
 						</Button>
 					</Box>
 				</Box>
