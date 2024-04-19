@@ -10,6 +10,7 @@ import MainBar from './components/MainBar';
 import Navbar from './components/NavBar';
 import News from './components/News';
 import Partner from './components/Partner';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import Service from './components/Service';
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default function Home() {
 			<Partner logos={logos} />
 			<ConsultingForm />
 			<Footer />
+			<ScrollToTopButton />
 		</main>
 	);
 }
