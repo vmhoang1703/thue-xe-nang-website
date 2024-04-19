@@ -1,11 +1,15 @@
+'use client';
+
 import { ThemeProvider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Image from 'next/image';
 
 import FeaturesBox from './FeatureBox';
 
 const AboutCompany = () => {
+	const isMobile = useMediaQuery('(max-width: 600px)');
 	const features = [
 		{ label: 'Chất lượng tốt' },
 		{ label: 'Uy tín' },
@@ -14,9 +18,9 @@ const AboutCompany = () => {
 	];
 
 	return (
-		<Container sx={styles.container}>
-			<Box sx={styles.bigBox}>
-				<Box sx={styles.leftBox}>
+		<Container sx={isMobile ? styles.mobileContainer : styles.container}>
+			<Box sx={isMobile ? styles.mobileBox : styles.bigBox}>
+				<Box sx={isMobile ? styles.mobileLeftBox : styles.leftBox}>
 					<Box sx={styles.companyNameBox1}>
 						<ThemeProvider
 							theme={{
@@ -29,20 +33,19 @@ const AboutCompany = () => {
 							}}
 						>
 							<Box
-								sx={{
-									width: 10,
-									height: 100,
-									borderRadius: 30,
-									bgcolor: '#E98A33',
-								}}
+								sx={isMobile ? styles.mobileColumnTheme : styles.columnTheme}
 							/>
 						</ThemeProvider>
 						<Box sx={styles.companyNameBox2}>
-							<p style={styles.about}>VỀ CHÚNG TÔI</p>
-							<p style={styles.name}>LONG ANH PHÁT</p>
+							<p style={isMobile ? styles.mobileAbout : styles.about}>
+								VỀ CHÚNG TÔI
+							</p>
+							<p style={isMobile ? styles.mobileName : styles.name}>
+								LONG ANH PHÁT
+							</p>
 						</Box>
 					</Box>
-					<p style={styles.description}>
+					<p style={isMobile ? styles.mobileDescription : styles.description}>
 						Thành lập từ năm 2003, Long Anh Phát là một trong những công ty CHO
 						THUÊ XE NÂNG ĐẦU TIÊN TẠI BÀ RỊA và đã có những bước đi vững chắc để
 						trở thành thương hiệu uy tín và được rất nhiều sự tín nhiệm trên thị
@@ -51,15 +54,17 @@ const AboutCompany = () => {
 						xếp hạng tín dụng AAA (2012) và A (2014).
 					</p>
 				</Box>
-				<Box sx={styles.rightBox}>
-					<Image
-						src={'/introImage.png'}
-						alt={'forklift image'}
-						width={350}
-						height={250}
-						priority
-					/>
-				</Box>
+				{!isMobile && (
+					<Box sx={styles.rightBox}>
+						<Image
+							src={'/introImage.png'}
+							alt={'forklift image'}
+							width={350}
+							height={250}
+							priority
+						/>
+					</Box>
+				)}
 			</Box>
 			<FeaturesBox features={features} />
 		</Container>
@@ -71,11 +76,36 @@ const styles = {
 		marginTop: '85px',
 		paddingBottom: '50px',
 	},
+	mobileContainer: {
+		marginTop: '30px',
+		paddingBottom: '50px',
+	},
 	bigBox: {
 		display: 'flex',
 	},
+	mobileBox: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+	},
 	leftBox: {
 		width: '50%',
+	},
+	mobileLeftBox: {
+		width: '100%',
+		marginBottom: '20px',
+	},
+	columnTheme: {
+		width: 10,
+		height: 100,
+		borderRadius: 30,
+		bgcolor: '#E98A33',
+	},
+	mobileColumnTheme: {
+		width: 7,
+		height: 70,
+		borderRadius: 30,
+		bgcolor: '#E98A33',
 	},
 	rightBox: {
 		width: '50%',
@@ -98,13 +128,30 @@ const styles = {
 		padding: 0,
 		margin: 0,
 	},
+	mobileAbout: {
+		fontSize: '1rem',
+		fontWeight: '600',
+		padding: 0,
+		margin: 0,
+	},
 	name: {
 		fontSize: '3rem',
 		fontWeight: '700',
 		color: '#E98A33',
 	},
+	mobileName: {
+		fontSize: '2rem',
+		fontWeight: '700',
+		color: '#E98A33',
+	},
 	description: {
 		fontSize: '1.1rem',
+		fontWeight: 550,
+		marginTop: '25px',
+		textAlign: 'justify' as never,
+	},
+	mobileDescription: {
+		fontSize: '1rem',
 		fontWeight: 550,
 		marginTop: '25px',
 		textAlign: 'justify' as never,

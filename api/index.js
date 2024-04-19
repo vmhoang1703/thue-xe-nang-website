@@ -7,7 +7,7 @@ const sendEmailRoute = require('./routes/send-email.routes');
 const dbConnect = require('./db');
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());

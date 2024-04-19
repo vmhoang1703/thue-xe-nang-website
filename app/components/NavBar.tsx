@@ -1,5 +1,3 @@
-'use client';
-
 import { type FC } from 'react';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Container from '@mui/material/Container';
