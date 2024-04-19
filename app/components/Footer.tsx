@@ -18,77 +18,79 @@ function Copyright() {
 
 const Footer = () => {
 	return (
-		<Container maxWidth="lg" sx={styles.container}>
-			<Box sx={styles.mainBox}>
-				<Box sx={styles.sideBox}>
-					<Box sx={styles.newsletterBox}>
-						<Box sx={styles.logoAndName}>
-							<Box>
-								<Image
-									src={'/logo.png'}
-									alt={'Logo icon'}
-									width={75}
-									height={30}
-								/>
+		<Container maxWidth="xl" sx={{ backgroundColor: '#F5F3F3' }}>
+			<Container maxWidth="lg" sx={styles.container}>
+				<Box sx={styles.mainBox}>
+					<Box sx={styles.sideBox}>
+						<Box sx={styles.newsletterBox}>
+							<Box sx={styles.logoAndName}>
+								<Box>
+									<Image
+										src={'/logo.png'}
+										alt={'Logo icon'}
+										width={75}
+										height={30}
+									/>
+								</Box>
+								<p style={styles.companyName}>CÔNG TY TNHH LONG ANH PHÁT</p>
 							</Box>
-							<p style={styles.companyName}>CÔNG TY TNHH LONG ANH PHÁT</p>
+							<div style={styles.companyInfo}>
+								<p>
+									Địa chỉ Cơ Sở 1: 19A/2 , KP 8A , Phường Tân Biên , Thành Phố
+									Biên Hòa
+									<br />
+									Địa chỉ Cơ Sở 2: 158/16 Trần Huy Liệu. Q,Phú Nhuận. TPHCM
+									<br />
+									Phone: 0937.333.000 - 0938.333.000 (A. Điển)
+									<br />
+									Email: longanhphat@gmail.com
+									<br />
+									Giờ mở cửa: 08:00 AM ‐ 17:30 PM
+								</p>
+							</div>
 						</Box>
-						<div style={styles.companyInfo}>
-							<p>
-								Địa chỉ Cơ Sở 1: 19A/2 , KP 8A , Phường Tân Biên , Thành Phố
-								Biên Hòa
-								<br />
-								Địa chỉ Cơ Sở 2: 158/16 Trần Huy Liệu. Q,Phú Nhuận. TPHCM
-								<br />
-								Phone: 0937.333.000 - 0938.333.000 (A. Điển)
-								<br />
-								Email: longanhphat@gmail.com
-								<br />
-								Giờ mở cửa: 08:00 AM ‐ 17:30 PM
-							</p>
-						</div>
 					</Box>
 				</Box>
-			</Box>
-			<Box sx={styles.footerDivider}>
-				<div>
-					<Copyright />
-				</div>
-				<Stack
-					direction="row"
-					justifyContent="left"
-					spacing={1}
-					useFlexGap
-					sx={{
-						color: 'text.secondary',
-					}}
-				>
-					<IconButton
-						color="inherit"
-						href="https://github.com/mui"
-						aria-label="GitHub"
-						sx={{ alignSelf: 'center' }}
+				<Box sx={styles.footerDivider}>
+					<div>
+						<Copyright />
+					</div>
+					<Stack
+						direction="row"
+						justifyContent="left"
+						spacing={1}
+						useFlexGap
+						sx={{
+							color: 'text.secondary',
+						}}
 					>
-						<FacebookIcon />
-					</IconButton>
-					<IconButton
-						color="inherit"
-						href="https://twitter.com/MaterialUI"
-						aria-label="X"
-						sx={{ alignSelf: 'center' }}
-					>
-						<TwitterIcon />
-					</IconButton>
-					<IconButton
-						color="inherit"
-						href="https://www.linkedin.com/company/mui/"
-						aria-label="LinkedIn"
-						sx={{ alignSelf: 'center' }}
-					>
-						<LinkedInIcon />
-					</IconButton>
-				</Stack>
-			</Box>
+						<IconButton
+							color="inherit"
+							href="https://github.com/mui"
+							aria-label="GitHub"
+							sx={{ alignSelf: 'center' }}
+						>
+							<FacebookIcon />
+						</IconButton>
+						<IconButton
+							color="inherit"
+							href="https://twitter.com/MaterialUI"
+							aria-label="X"
+							sx={{ alignSelf: 'center' }}
+						>
+							<TwitterIcon />
+						</IconButton>
+						<IconButton
+							color="inherit"
+							href="https://www.linkedin.com/company/mui/"
+							aria-label="LinkedIn"
+							sx={{ alignSelf: 'center' }}
+						>
+							<LinkedInIcon />
+						</IconButton>
+					</Stack>
+				</Box>
+			</Container>
 		</Container>
 	);
 };
