@@ -7,8 +7,11 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const ConsultingForm = () => {
+	const isMobile = useMediaQuery('(max-width: 600px)');
+
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -59,8 +62,8 @@ const ConsultingForm = () => {
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
-			<Box sx={styles.bigBox}>
-				<Box sx={styles.leftBox}>
+			<Box sx={isMobile ? styles.mobileBigBox : styles.bigBox}>
+				<Box sx={isMobile ? styles.mobileLeftBox : styles.leftBox}>
 					<Box
 						component="form"
 						noValidate
@@ -126,7 +129,7 @@ const ConsultingForm = () => {
 						</Button>
 					</Box>
 				</Box>
-				<Box sx={styles.rightBox}>
+				<Box sx={isMobile ? styles.mobileRightBox : styles.rightBox}>
 					<Box sx={styles.companyNameBox1}>
 						<ThemeProvider
 							theme={{
@@ -139,17 +142,16 @@ const ConsultingForm = () => {
 							}}
 						>
 							<Box
-								sx={{
-									width: 10,
-									height: 100,
-									borderRadius: 30,
-									bgcolor: '#E98A33',
-								}}
+								sx={isMobile ? styles.mobileColumnTheme : styles.columnTheme}
 							/>
 						</ThemeProvider>
 						<Box sx={styles.companyNameBox2}>
-							<p style={styles.about}>TƯ VẤN MIỄN PHÍ</p>
-							<p style={styles.name}>LONG ANH PHÁT</p>
+							<p style={isMobile ? styles.mobileAbout : styles.about}>
+								TƯ VẤN MIỄN PHÍ
+							</p>
+							<p style={isMobile ? styles.mobileName : styles.name}>
+								LONG ANH PHÁT
+							</p>
 						</Box>
 					</Box>
 				</Box>
@@ -168,6 +170,10 @@ const styles = {
 	bigBox: {
 		display: 'flex',
 	},
+	mobileBigBox: {
+		display: 'flex',
+		flexDirection: 'column-reverse',
+	},
 	leftBox: {
 		width: '50%',
 		display: 'flex',
@@ -175,8 +181,18 @@ const styles = {
 		alignItems: 'center',
 		padding: '20px',
 	},
+	mobileLeftBox: {
+		width: '100%',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: '20px',
+	},
 	rightBox: {
 		width: '50%',
+	},
+	mobileRightBox: {
+		width: '100%',
 	},
 	companyNameBox1: {
 		display: 'flex',
@@ -195,8 +211,19 @@ const styles = {
 		padding: 0,
 		margin: 0,
 	},
+	mobileAbout: {
+		fontSize: '1rem',
+		fontWeight: '600',
+		padding: 0,
+		margin: 0,
+	},
 	name: {
 		fontSize: '3rem',
+		fontWeight: '700',
+		color: '#E98A33',
+	},
+	mobileName: {
+		fontSize: '2rem',
 		fontWeight: '700',
 		color: '#E98A33',
 	},
@@ -214,6 +241,18 @@ const styles = {
 	},
 	form: {
 		maxWidth: 400,
+	},
+	columnTheme: {
+		width: 10,
+		height: 100,
+		borderRadius: 30,
+		bgcolor: '#E98A33',
+	},
+	mobileColumnTheme: {
+		width: 7,
+		height: 70,
+		borderRadius: 30,
+		bgcolor: '#E98A33',
 	},
 };
 
