@@ -22,7 +22,8 @@ export const metadata: Metadata = {
 const navLinks = [
 	{ label: 'Trang chủ', path: '/' },
 	{ label: 'Dịch vụ', path: '/dich-vu' },
-	{ label: 'Liên hệ', path: '/lien-he' },
+	{ label: 'Tin tức', path: '/tin-tuc' },
+	// { label: 'Liên hệ', path: '/lien-he' },
 ];
 
 const headerLinks = [
