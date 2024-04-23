@@ -19,7 +19,7 @@ interface DetailPostProps {
 	title: string;
 }
 
-const DetailPost = ({ post, otherPosts, title }: DetailPostProps) => {
+const DetailServicePost = ({ post, otherPosts, title }: DetailPostProps) => {
 	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
 		year: 'numeric',
 		month: 'long',
@@ -28,26 +28,33 @@ const DetailPost = ({ post, otherPosts, title }: DetailPostProps) => {
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
-			<Grid container spacing={3}>
-				<Grid item xs={9} style={styles.detailGrid}>
-					<img src={post.imageUrl} alt={post.title} style={styles.image} />
-					<h1 style={styles.title}>{post.title}</h1>
-					<p style={styles.description}>{post.description}</p>
-					<p style={styles.date}>Ngày xuất bản: {formattedDate}</p>
+			<Grid container spacing={2}>
+				<Grid item xs={12} style={styles.detailGrid}>
+					<Grid container spacing={4}>
+						<Grid item xs={12} md={6}>
+							<h1 style={styles.title}>{post.title}</h1>
+							<p style={styles.date}>Ngày xuất bản: {formattedDate}</p>
+							<img src={post.imageUrl} alt={post.title} style={styles.image} />
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<p style={styles.description}>{post.description}</p>
+						</Grid>
+					</Grid>
 				</Grid>
-				<Grid item xs={3}>
+				<Grid item xs={12}>
 					<h2>Các {title} khác</h2>
-					<div style={styles.otherPostsContainer}>
+					<Grid container spacing={2} mt={1}>
 						{otherPosts.map((otherPost) => (
-							<ServiceCard
-								key={otherPost.slug}
-								title={otherPost.title}
-								slug={otherPost.slug}
-								imageUrl={otherPost.imageUrl}
-								shortDescription={otherPost.shortDescription}
-							/>
+							<Grid item xs={12} sm={6} md={4} key={otherPost.slug}>
+								<ServiceCard
+									title={otherPost.title}
+									slug={otherPost.slug}
+									imageUrl={otherPost.imageUrl}
+									shortDescription={otherPost.shortDescription}
+								/>
+							</Grid>
 						))}
-					</div>
+					</Grid>
 				</Grid>
 			</Grid>
 		</Container>
@@ -60,7 +67,7 @@ const styles = {
 		marginBottom: 5,
 	},
 	detailGrid: {
-		paddingRight: '20px',
+		marginBottom: 50,
 	},
 	title: {
 		marginBottom: 10,
@@ -69,24 +76,23 @@ const styles = {
 	date: {
 		fontSize: '1.2rem',
 		fontWeight: 500,
-		marginTop: 20,
-		float: 'right' as const,
+		marginBottom: 20,
 	},
 	description: {
 		fontSize: '1.2rem',
 		fontWeight: 450,
-		marginTop: 25,
-		textAlign: 'justify' as never,
+		textAlign: 'justify' as const,
 	},
 	image: {
 		width: '100%',
 		marginBottom: '20px',
 	},
 	otherPostsContainer: {
+		display: 'flex',
 		maxHeight: '150vh',
-		overflowY: 'auto' as const,
+		// overflowY: 'auto' as const,
 		marginTop: 20,
 	},
 };
 
-export default DetailPost;
+export default DetailServicePost;

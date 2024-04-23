@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import { alpha, styled } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Image from 'next/legacy/image';
+import Link from 'next/link';
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -52,7 +53,7 @@ const MainBar = () => {
 
 	return (
 		<div>
-			<AppBar position="static" sx={styles.mainbar}>
+			<AppBar position="static" sx={styles.mainbar} elevation={1}>
 				<Container
 					maxWidth="xl"
 					sx={{
@@ -62,13 +63,15 @@ const MainBar = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center' }}>
-						<Image
-							src={'/logo.png'}
-							alt={'Logo Image'}
-							width={isTabletMobile ? 150 : 250}
-							height={isTabletMobile ? 50 : 70}
-							priority
-						/>
+						<Link href={'/'}>
+							<Image
+								src={'/logo.png'}
+								alt={'Logo Image'}
+								width={isTabletMobile ? 150 : 250}
+								height={isTabletMobile ? 50 : 70}
+								priority
+							/>
+						</Link>
 					</Box>
 					{!isTabletMobile && (
 						<Fragment>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import DetailPost from '../../components/DetailPost';
+import DetailNewsPost from '../../components/DetailNewsPost';
 import Footer from '../../components/Footer';
 import MainBar from '../../components/MainBar';
 import Navbar from '../../components/NavBar';
@@ -46,7 +46,11 @@ export default async function DetailNewsPage({
 		<main>
 			<Navbar links={navLinks} />
 			<MainBar />
-			<DetailPost post={newsPost} otherPosts={otherNewsPost} title="tin tức" />
+			<DetailNewsPost
+				post={newsPost}
+				otherPosts={otherNewsPost}
+				title="tin tức"
+			/>
 			<Footer />
 		</main>
 	);

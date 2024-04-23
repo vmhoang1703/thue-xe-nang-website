@@ -120,7 +120,6 @@ const styles = {
 	title: {
 		fontSize: '1.2rem',
 		fontWeight: 600,
-		textAlign: 'justify' as never,
 	},
 	mobileTitle: {
 		fontSize: '0.9rem',
