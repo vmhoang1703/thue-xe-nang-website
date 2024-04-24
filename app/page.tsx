@@ -31,6 +31,9 @@ export const metadata: Metadata = {
 		'xe nâng Komatsu Bà Rịa',
 		'công ty Long Anh Phát',
 	],
+	icons: {
+		icon: '/favicon.ico',
+	},
 };
 
 const navLinks = [
@@ -55,6 +58,12 @@ const items = [
 	},
 	{
 		imageUrl: '/slider-02.jpg',
+	},
+	{
+		imageUrl: '/slider-03.jpg',
+	},
+	{
+		imageUrl: '/slider-04.jpg',
 	},
 ];
 

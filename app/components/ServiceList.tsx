@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Link from 'next/link';
 
 import SectionTitle from './SectionTitle';
 import ServiceCard from './ServiceCard';
@@ -15,7 +13,7 @@ interface ServicePost {
 	shortDescription: string;
 }
 
-const Service = () => {
+const ServiceList = () => {
 	const [servicePosts, setServicePosts] = useState<ServicePost[]>([]);
 
 	useEffect(() => {
@@ -26,7 +24,7 @@ const Service = () => {
 				);
 				if (response.status == 200) {
 					const data = await response.json();
-					setServicePosts(data.slice(0, 4));
+					setServicePosts(data);
 				} else {
 					throw new Error('Failed to fetch service posts');
 				}
@@ -40,7 +38,7 @@ const Service = () => {
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
-			<SectionTitle title="DỊCH VỤ CỦA CHÚNG TÔI" />
+			<SectionTitle title="Các dịch vụ tại Long Anh Phát" />
 			<div style={styles.serviceContainer}>
 				{servicePosts.map((servicePost) => (
 					<ServiceCard
@@ -52,18 +50,13 @@ const Service = () => {
 					/>
 				))}
 			</div>
-			<Link href={'/dich-vu'} style={styles.xemThemLink}>
-				<Button variant="contained" color="success" sx={styles.xemThemBtn}>
-					Xem thêm
-				</Button>
-			</Link>
 		</Container>
 	);
 };
 
 const styles = {
 	container: {
-		backgroundColor: '#F7F7F7',
+		marginTop: '10px',
 		paddingBottom: '50px',
 	},
 	serviceContainer: {
@@ -74,14 +67,6 @@ const styles = {
 		maxWidth: '1000px',
 		margin: '0 auto',
 	},
-	xemThemLink: {
-		display: 'flex',
-		justifyContent: 'center',
-		textDecoration: 'none',
-	},
-	xemThemBtn: {
-		marginTop: 5,
-	},
 };
 
-export default Service;
+export default ServiceList;

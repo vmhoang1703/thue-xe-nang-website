@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Link from 'next/link';
 
 import NewsCard from './NewsCard';
 import SectionTitle from './SectionTitle';
@@ -16,7 +14,7 @@ interface News {
 	createdAt: string;
 }
 
-const News = () => {
+const NewsList = () => {
 	const [news, setNews] = useState<News[]>([]);
 
 	useEffect(() => {
@@ -27,7 +25,7 @@ const News = () => {
 				);
 				if (response.status == 200) {
 					const data = await response.json();
-					setNews(data.slice(0, 6));
+					setNews(data);
 				} else {
 					throw new Error('Failed to fetch service posts');
 				}
@@ -41,7 +39,7 @@ const News = () => {
 
 	return (
 		<Container sx={styles.container}>
-			<SectionTitle title="TIN TỨC NỔI BẬT" />
+			<SectionTitle title="Các tin tức mới nhất" />
 			<div style={styles.newsContainer}>
 				{news.map((news) => (
 					<NewsCard
@@ -54,11 +52,6 @@ const News = () => {
 					/>
 				))}
 			</div>
-			<Link href={'/tin-tuc'} style={styles.xemThemLink}>
-				<Button variant="contained" color="success" sx={styles.xemThemBtn}>
-					Xem thêm
-				</Button>
-			</Link>
 		</Container>
 	);
 };
@@ -66,6 +59,7 @@ const News = () => {
 const styles = {
 	container: {
 		backgroundColor: '#fff',
+		marginTop: '10px',
 		paddingBottom: '50px',
 	},
 	newsContainer: {
@@ -76,14 +70,6 @@ const styles = {
 		maxWidth: '1200px',
 		margin: '0 auto',
 	},
-	xemThemLink: {
-		display: 'flex',
-		justifyContent: 'center',
-		textDecoration: 'none',
-	},
-	xemThemBtn: {
-		marginTop: 5,
-	},
 };
 
-export default News;
+export default NewsList;

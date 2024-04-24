@@ -60,5 +60,8 @@ export async function generateMetadata({
 		title: servicePost.metadata.title,
 		description: servicePost.metadata.description,
 		keywords: servicePost.metadata.keywords,
+		icons: {
+			icon: '/favicon.ico',
+		},
 	};
 }

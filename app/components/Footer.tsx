@@ -1,10 +1,8 @@
-import FacebookIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/X';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
-// import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 
@@ -79,14 +77,6 @@ const Footer = () => {
 							sx={{ alignSelf: 'center' }}
 						>
 							<TwitterIcon />
-						</IconButton>
-						<IconButton
-							color="inherit"
-							href="https://www.linkedin.com/company/mui/"
-							aria-label="LinkedIn"
-							sx={{ alignSelf: 'center' }}
-						>
-							<LinkedInIcon />
 						</IconButton>
 					</Stack>
 				</Box>
