@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 	description:
 		'Công ty Long Anh Phát chuyên cung cấp dịch vụ cho thuê xe nâng uy tín, chất lượng tại Bà Rịa. Đa dạng loại xe nâng hàng, nâng điện, nâng dầu từ các hãng nổi tiếng. Giá cả hợp lý, nhân viên chuyên nghiệp, cam kết dịch vụ tốt nhất | Liên Hệ [ 0938.333.000 A.Điển ]',
 	keywords: [
+		'thuê xe nâng Bà Rịa',
 		'cho thuê xe nâng tại Bà Rịa',
 		'dịch vụ cho thuê xe nâng Bà Rịa',
 		'thuê xe nâng giá rẻ Bà Rịa',
