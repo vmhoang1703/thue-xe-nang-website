@@ -16,7 +16,7 @@ import Service from './components/Service';
 export const metadata: Metadata = {
 	title: 'Thuê xe nâng Bà Rịa',
 	description:
-		'Chuyên thuê xe nâng tại Bà Rịa. Cam kết uy tín và chuyên nghiệp nhất | L.Hệ [ 0938.333.000 A.Điển ]',
+		'Công ty Long Anh Phát chuyên cung cấp dịch vụ cho thuê xe nâng uy tín, chất lượng tại Bà Rịa. Đa dạng loại xe nâng hàng, nâng điện, nâng dầu từ các hãng nổi tiếng. Giá cả hợp lý, nhân viên chuyên nghiệp, cam kết dịch vụ tốt nhất | Liên Hệ [ 0938.333.000 A.Điển ]',
 	keywords: [
 		'dịch vụ cho thuê xe nâng tại Bà Rịa',
 		'thuê xe nâng giá rẻ tại Bà Rịa',
