@@ -36,21 +36,11 @@ export default async function DetailServicePostPage({
 	);
 	const servicePost: ServicePost = await responsePost.json();
 
-	const responseOtherPosts = fetch(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services`,
-	);
-	const data: ServicePost[] = await (await responseOtherPosts).json();
-	const otherServicePost = data.filter((post) => post.slug !== params.slug);
-
 	return (
 		<main>
 			<Navbar links={navLinks} />
 			<MainBar />
-			<DetailServicePost
-				post={servicePost}
-				otherPosts={otherServicePost}
-				title="dịch vụ"
-			/>
+			<DetailServicePost post={servicePost} />
 			<Footer />
 		</main>
 	);

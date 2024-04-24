@@ -1,4 +1,7 @@
+'use client';
+
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
@@ -10,21 +13,49 @@ interface Post {
 	title: string;
 	description: string;
 	shortDescription: string;
+	metadata: {
+		title: string;
+		description: string;
+		keywords: string[];
+	};
 	createdAt: string;
 }
 
 interface DetailPostProps {
 	post: Post;
-	otherPosts: Post[];
-	title: string;
 }
 
-const DetailServicePost = ({ post, otherPosts, title }: DetailPostProps) => {
+const DetailServicePost = ({ post }: DetailPostProps) => {
+	const [otherServicePosts, setOtherServicePosts] = useState<Post[]>([]);
+
 	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
 	});
+
+	useEffect(() => {
+		const fetchServiceOtherPosts = async () => {
+			try {
+				const responseOtherPosts = await fetch(
+					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services`,
+				);
+				if (responseOtherPosts.status == 200) {
+					const data: Post[] = await (await responseOtherPosts).json();
+					const otherServicePost = data.filter(
+						(otherPost) => otherPost.slug !== post.slug,
+					);
+					setOtherServicePosts(otherServicePost);
+				} else {
+					throw new Error('Failed to fetch service posts');
+				}
+			} catch (error) {
+				console.error('Error fetching service posts:', error);
+			}
+		};
+
+		fetchServiceOtherPosts();
+	}, []);
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
@@ -42,9 +73,9 @@ const DetailServicePost = ({ post, otherPosts, title }: DetailPostProps) => {
 					</Grid>
 				</Grid>
 				<Grid item xs={12}>
-					<h2>Các {title} khác</h2>
+					<h2>Các dịch vụ khác</h2>
 					<Grid container spacing={2} mt={1}>
-						{otherPosts.map((otherPost) => (
+						{otherServicePosts.map((otherPost) => (
 							<Grid item xs={12} sm={6} md={4} key={otherPost.slug}>
 								<ServiceCard
 									title={otherPost.title}

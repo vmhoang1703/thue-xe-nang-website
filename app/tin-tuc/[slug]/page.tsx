@@ -36,21 +36,11 @@ export default async function DetailNewsPage({
 	);
 	const newsPost: News = await responsePost.json();
 
-	const responseOtherPosts = fetch(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news`,
-	);
-	const data: News[] = await (await responseOtherPosts).json();
-	const otherNewsPost = data.filter((post) => post.slug !== params.slug);
-
 	return (
 		<main>
 			<Navbar links={navLinks} />
 			<MainBar />
-			<DetailNewsPost
-				post={newsPost}
-				otherPosts={otherNewsPost}
-				title="tin tức"
-			/>
+			<DetailNewsPost post={newsPost} />
 			<Footer />
 		</main>
 	);
