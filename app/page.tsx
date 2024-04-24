@@ -68,7 +68,9 @@ const logos = [
 
 export default function Home() {
 	return (
-		<main style={{ backgroundImage: 'url("/background.png")' }}>
+		<main
+		// style={{ backgroundImage: 'url("/background.png")' }}
+		>
 			<Navbar links={navLinks} />
 			<MainBar />
 			<Header links={headerLinks} />
