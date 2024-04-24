@@ -74,9 +74,9 @@ const DetailNewsPost = ({ post }: DetailPostProps) => {
 				</Grid>
 				<Grid item xs={12}>
 					<h2>Các dịch vụ khác</h2>
-					<Grid container spacing={2} mt={1}>
+					<Grid container spacing={5} mt={1} sx={styles.otherNews}>
 						{otherNewsPosts.map((otherPost) => (
-							<Grid item xs={12} sm={6} md={4} key={otherPost.slug}>
+							<Grid item xs={12} sm={6} md={5} key={otherPost.slug}>
 								<NewsCard
 									title={otherPost.title}
 									slug={otherPost.slug}
@@ -124,6 +124,10 @@ const styles = {
 		maxHeight: '150vh',
 		// overflowY: 'auto' as const,
 		marginTop: 20,
+	},
+	otherNews: {
+		display: 'flex',
+		justifyContent: 'center',
 	},
 };
 
