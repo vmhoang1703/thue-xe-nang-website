@@ -61,7 +61,7 @@ const MainBar = () => {
 						padding: isMobile ? '20px 10px' : '35px 0px',
 					}}
 				>
-					<Box sx={{ display: 'flex', alignItems: 'center' }}>
+					<Box>
 						<Link href={'/'}>
 							<Image
 								src={'/logo.png'}

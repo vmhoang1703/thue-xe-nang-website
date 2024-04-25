@@ -3,11 +3,14 @@
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface HeaderProps {
@@ -41,6 +44,19 @@ const Header: FC<HeaderProps> = ({ links }) => {
 						<MenuIcon />
 					</IconButton>
 					<Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
+						<Box sx={styles.drawer}>
+							<Link href={'/'}>
+								<Image
+									src={'/logo.png'}
+									alt={'Logo Image'}
+									width={120}
+									height={40}
+									priority
+									style={styles.logo}
+								/>
+							</Link>
+						</Box>
+						<Divider />
 						<List>
 							{links.map((link, index) => (
 								<ListItem button key={index} onClick={toggleDrawer}>
@@ -115,7 +131,16 @@ const styles = {
 	mobileLink: {
 		color: '#000',
 		textDecoration: 'none',
-		fontSize: 13,
+		fontSize: 15,
+		padding: '0px 15px',
+		fontWeight: 500,
+	},
+	logo: {
+		margin: '15px 0px',
+	},
+	drawer: {
+		display: 'flex',
+		justifyContent: 'center',
 	},
 };
 
