@@ -58,8 +58,7 @@ const MainBar = () => {
 					maxWidth="xl"
 					sx={{
 						...styles.container,
-						padding: isTabletMobile ? '20px 0px' : '35px 0px',
-						justifyContent: isTabletMobile ? 'center' : 'space-between',
+						padding: isTabletMobile ? '20px 20px' : '35px 0px',
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -110,6 +109,22 @@ const MainBar = () => {
 							</Box>
 						</Fragment>
 					)}
+					{isTabletMobile && (
+						<Fragment>
+							<Box component="section" sx={styles.box}>
+								<Image
+									src={'/hotline.png'}
+									alt={'Hotline Icon'}
+									width={50}
+									height={50}
+								/>
+								<Box component="section" sx={styles.boxText}>
+									<p>HOTLINE tư vấn 24/7</p>
+									<p style={styles.textBottom}>0938.333.000 (Mr. Điển)</p>
+								</Box>
+							</Box>
+						</Fragment>
+					)}
 				</Container>
 			</AppBar>
 		</div>
@@ -123,6 +138,7 @@ const styles = {
 	container: {
 		display: 'flex',
 		alignItems: 'center',
+		justifyContent: 'space-between',
 	},
 	box: {
 		display: 'flex',
