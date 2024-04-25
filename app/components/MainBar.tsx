@@ -49,7 +49,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const MainBar = () => {
-	const isTabletMobile = useMediaQuery('(max-width:1100px)');
+	const isMobile = useMediaQuery('(max-width:1100px)');
 
 	return (
 		<div>
@@ -58,7 +58,7 @@ const MainBar = () => {
 					maxWidth="xl"
 					sx={{
 						...styles.container,
-						padding: isTabletMobile ? '20px 20px' : '35px 0px',
+						padding: isMobile ? '20px 10px' : '35px 0px',
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -66,13 +66,13 @@ const MainBar = () => {
 							<Image
 								src={'/logo.png'}
 								alt={'Logo Image'}
-								width={isTabletMobile ? 150 : 250}
-								height={isTabletMobile ? 50 : 70}
+								width={isMobile ? 130 : 250}
+								height={isMobile ? 40 : 70}
 								priority
 							/>
 						</Link>
 					</Box>
-					{!isTabletMobile && (
+					{!isMobile && (
 						<Fragment>
 							<Search>
 								<SearchIconWrapper>
@@ -109,18 +109,18 @@ const MainBar = () => {
 							</Box>
 						</Fragment>
 					)}
-					{isTabletMobile && (
+					{isMobile && (
 						<Fragment>
-							<Box component="section" sx={styles.box}>
+							<Box component="section" sx={styles.mobileBox}>
 								<Image
 									src={'/hotline.png'}
 									alt={'Hotline Icon'}
-									width={50}
-									height={50}
+									width={40}
+									height={40}
 								/>
-								<Box component="section" sx={styles.boxText}>
+								<Box component="section" sx={styles.mobileBoxText}>
 									<p>HOTLINE tư vấn 24/7</p>
-									<p style={styles.textBottom}>0938.333.000 (Mr. Điển)</p>
+									<p style={styles.mobileTextBottom}>0938.333.000 (Mr. Điển)</p>
 								</Box>
 							</Box>
 						</Fragment>
@@ -153,6 +153,22 @@ const styles = {
 		height: 'auto',
 	},
 	textBottom: {
+		fontWeight: '600',
+	},
+	mobileBox: {
+		display: 'flex',
+		paddingLeft: '10px',
+	},
+	mobileBoxText: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		color: 'black',
+		fontSize: 12,
+		paddingLeft: '10px',
+		height: 'auto',
+	},
+	mobileTextBottom: {
 		fontWeight: '600',
 	},
 };
