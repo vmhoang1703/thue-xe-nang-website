@@ -22,28 +22,35 @@ interface Post {
 }
 
 interface DetailPostProps {
-	post: Post;
+	slug: string;
 }
 
-const DetailServicePost = ({ post }: DetailPostProps) => {
+const DetailServicePost = ({ slug }: DetailPostProps) => {
+	const [post, setPost] = useState<Post | null>(null);
 	const [otherServicePosts, setOtherServicePosts] = useState<Post[]>([]);
 
-	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
-
 	useEffect(() => {
+		const fetchServicePost = async () => {
+			try {
+				const responsePost = await fetch(
+					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${slug}`,
+				);
+				const postData: Post = await responsePost.json();
+				setPost(postData);
+			} catch (error) {
+				console.error('Error fetching service post:', error);
+			}
+		};
+
 		const fetchServiceOtherPosts = async () => {
 			try {
 				const responseOtherPosts = await fetch(
 					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services`,
 				);
-				if (responseOtherPosts.status == 200) {
-					const data: Post[] = await (await responseOtherPosts).json();
+				if (responseOtherPosts.status === 200) {
+					const data: Post[] = await responseOtherPosts.json();
 					const otherServicePost = data.filter(
-						(otherPost) => otherPost.slug !== post.slug,
+						(otherPost) => otherPost.slug !== slug,
 					);
 					setOtherServicePosts(otherServicePost);
 				} else {
@@ -54,8 +61,21 @@ const DetailServicePost = ({ post }: DetailPostProps) => {
 			}
 		};
 
+		fetchServicePost();
 		fetchServiceOtherPosts();
-	}, []);
+	}, [slug]);
+
+	if (!post) {
+		return <div>Loading...</div>;
+	}
+
+	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+
+	const formattedDescription = post.description.replace(/\\n/g, '<br>');
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
@@ -68,7 +88,10 @@ const DetailServicePost = ({ post }: DetailPostProps) => {
 							<img src={post.imageUrl} alt={post.title} style={styles.image} />
 						</Grid>
 						<Grid item xs={12} md={6}>
-							<p style={styles.description}>{post.description}</p>
+							<p
+								style={styles.description}
+								dangerouslySetInnerHTML={{ __html: formattedDescription }}
+							/>
 						</Grid>
 					</Grid>
 				</Grid>
@@ -113,6 +136,7 @@ const styles = {
 		fontSize: '1.2rem',
 		fontWeight: 450,
 		textAlign: 'justify' as const,
+		whiteSpace: 'pre-wrap',
 	},
 	image: {
 		width: '100%',

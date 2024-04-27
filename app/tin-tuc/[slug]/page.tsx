@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import MainBar from '../../components/MainBar';
 import Navbar from '../../components/NavBar';
 
-interface News {
+interface NewsPost {
 	slug: string;
 	imageUrl: string;
 	title: string;
@@ -26,21 +26,16 @@ const navLinks = [
 	// { label: 'Liên hệ', path: '/lien-he' },
 ];
 
-export default async function DetailNewsPage({
+export default function DetailNewsPostPage({
 	params,
 }: {
 	params: { slug: string };
 }) {
-	const responsePost = await fetch(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${params.slug}`,
-	);
-	const newsPost: News = await responsePost.json();
-
 	return (
 		<main>
 			<Navbar links={navLinks} />
 			<MainBar />
-			<DetailNewsPost post={newsPost} />
+			<DetailNewsPost slug={params.slug} />
 			<Footer />
 		</main>
 	);
@@ -54,12 +49,11 @@ export async function generateMetadata({
 	const response = await fetch(
 		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${params.slug}`,
 	);
-	const news: News = await response.json();
-
+	const NewsPost: NewsPost = await response.json();
 	return {
-		title: news.metadata.title,
-		description: news.metadata.description,
-		keywords: news.metadata.keywords,
+		title: NewsPost.metadata.title,
+		description: NewsPost.metadata.description,
+		keywords: NewsPost.metadata.keywords,
 		icons: {
 			icon: '/favicon.ico',
 		},

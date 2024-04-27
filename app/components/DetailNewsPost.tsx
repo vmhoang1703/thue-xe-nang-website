@@ -22,28 +22,35 @@ interface Post {
 }
 
 interface DetailPostProps {
-	post: Post;
+	slug: string;
 }
 
-const DetailNewsPost = ({ post }: DetailPostProps) => {
+const DetailNewsPost = ({ slug }: DetailPostProps) => {
+	const [post, setPost] = useState<Post | null>(null);
 	const [otherNewsPosts, setOtherNewsPosts] = useState<Post[]>([]);
 
-	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
-
 	useEffect(() => {
+		const fetchNewsPost = async () => {
+			try {
+				const responsePost = await fetch(
+					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${slug}`,
+				);
+				const postData: Post = await responsePost.json();
+				setPost(postData);
+			} catch (error) {
+				console.error('Error fetching News post:', error);
+			}
+		};
+
 		const fetchNewsOtherPosts = async () => {
 			try {
 				const responseOtherPosts = await fetch(
 					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news`,
 				);
-				if (responseOtherPosts.status == 200) {
-					const data: Post[] = await (await responseOtherPosts).json();
+				if (responseOtherPosts.status === 200) {
+					const data: Post[] = await responseOtherPosts.json();
 					const otherNewsPost = data.filter(
-						(otherPost) => otherPost.slug !== post.slug,
+						(otherPost) => otherPost.slug !== slug,
 					);
 					setOtherNewsPosts(otherNewsPost);
 				} else {
@@ -54,8 +61,21 @@ const DetailNewsPost = ({ post }: DetailPostProps) => {
 			}
 		};
 
+		fetchNewsPost();
 		fetchNewsOtherPosts();
-	}, []);
+	}, [slug]);
+
+	if (!post) {
+		return <div>Loading...</div>;
+	}
+
+	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+
+	const formattedDescription = post.description.replace(/\\n/g, '<br>');
 
 	return (
 		<Container maxWidth="xl" sx={styles.container}>
@@ -68,15 +88,18 @@ const DetailNewsPost = ({ post }: DetailPostProps) => {
 							<img src={post.imageUrl} alt={post.title} style={styles.image} />
 						</Grid>
 						<Grid item xs={12} md={6}>
-							<p style={styles.description}>{post.description}</p>
+							<p
+								style={styles.description}
+								dangerouslySetInnerHTML={{ __html: formattedDescription }}
+							/>
 						</Grid>
 					</Grid>
 				</Grid>
 				<Grid item xs={12}>
 					<h2>Các dịch vụ khác</h2>
-					<Grid container spacing={5} mt={1} sx={styles.otherNews}>
+					<Grid container spacing={2} mt={1}>
 						{otherNewsPosts.map((otherPost) => (
-							<Grid item xs={12} sm={6} md={5} key={otherPost.slug}>
+							<Grid item xs={12} sm={6} md={4} key={otherPost.slug}>
 								<NewsCard
 									title={otherPost.title}
 									slug={otherPost.slug}
@@ -114,6 +137,7 @@ const styles = {
 		fontSize: '1.2rem',
 		fontWeight: 450,
 		textAlign: 'justify' as const,
+		whiteSpace: 'pre-wrap',
 	},
 	image: {
 		width: '100%',
@@ -124,10 +148,6 @@ const styles = {
 		maxHeight: '150vh',
 		// overflowY: 'auto' as const,
 		marginTop: 20,
-	},
-	otherNews: {
-		display: 'flex',
-		justifyContent: 'center',
 	},
 };
 
