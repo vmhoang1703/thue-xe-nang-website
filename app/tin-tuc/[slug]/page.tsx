@@ -26,16 +26,21 @@ const navLinks = [
 	// { label: 'Liên hệ', path: '/lien-he' },
 ];
 
-export default function DetailNewsPostPage({
+export default async function DetailNewsPage({
 	params,
 }: {
 	params: { slug: string };
 }) {
+	const responsePost = await fetch(
+		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${params.slug}`,
+	);
+	const newsPost: NewsPost = await responsePost.json();
+
 	return (
 		<main>
 			<Navbar links={navLinks} />
 			<MainBar />
-			<DetailNewsPost slug={params.slug} />
+			<DetailNewsPost post={newsPost} />
 			<Footer />
 		</main>
 	);

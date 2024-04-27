@@ -22,26 +22,19 @@ interface Post {
 }
 
 interface DetailPostProps {
-	slug: string;
+	post: Post;
 }
 
-const DetailNewsPost = ({ slug }: DetailPostProps) => {
-	const [post, setPost] = useState<Post | null>(null);
+const DetailNewsPost = ({ post }: DetailPostProps) => {
 	const [otherNewsPosts, setOtherNewsPosts] = useState<Post[]>([]);
 
-	useEffect(() => {
-		const fetchNewsPost = async () => {
-			try {
-				const responsePost = await fetch(
-					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/news/${slug}`,
-				);
-				const postData: Post = await responsePost.json();
-				setPost(postData);
-			} catch (error) {
-				console.error('Error fetching News post:', error);
-			}
-		};
+	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
 
+	useEffect(() => {
 		const fetchNewsOtherPosts = async () => {
 			try {
 				const responseOtherPosts = await fetch(
@@ -50,7 +43,7 @@ const DetailNewsPost = ({ slug }: DetailPostProps) => {
 				if (responseOtherPosts.status === 200) {
 					const data: Post[] = await responseOtherPosts.json();
 					const otherNewsPost = data.filter(
-						(otherPost) => otherPost.slug !== slug,
+						(otherPost) => otherPost.slug !== post.slug,
 					);
 					setOtherNewsPosts(otherNewsPost);
 				} else {
@@ -61,19 +54,8 @@ const DetailNewsPost = ({ slug }: DetailPostProps) => {
 			}
 		};
 
-		fetchNewsPost();
 		fetchNewsOtherPosts();
-	}, [slug]);
-
-	if (!post) {
-		return <div>Loading...</div>;
-	}
-
-	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
+	}, []);
 
 	const formattedDescription = post.description.replace(/\\n/g, '<br>');
 

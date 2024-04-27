@@ -22,26 +22,19 @@ interface Post {
 }
 
 interface DetailPostProps {
-	slug: string;
+	post: Post;
 }
 
-const DetailServicePost = ({ slug }: DetailPostProps) => {
-	const [post, setPost] = useState<Post | null>(null);
+const DetailServicePost = ({ post }: DetailPostProps) => {
 	const [otherServicePosts, setOtherServicePosts] = useState<Post[]>([]);
 
-	useEffect(() => {
-		const fetchServicePost = async () => {
-			try {
-				const responsePost = await fetch(
-					`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${slug}`,
-				);
-				const postData: Post = await responsePost.json();
-				setPost(postData);
-			} catch (error) {
-				console.error('Error fetching service post:', error);
-			}
-		};
+	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
 
+	useEffect(() => {
 		const fetchServiceOtherPosts = async () => {
 			try {
 				const responseOtherPosts = await fetch(
@@ -50,7 +43,7 @@ const DetailServicePost = ({ slug }: DetailPostProps) => {
 				if (responseOtherPosts.status === 200) {
 					const data: Post[] = await responseOtherPosts.json();
 					const otherServicePost = data.filter(
-						(otherPost) => otherPost.slug !== slug,
+						(otherPost) => otherPost.slug !== post.slug,
 					);
 					setOtherServicePosts(otherServicePost);
 				} else {
@@ -61,19 +54,8 @@ const DetailServicePost = ({ slug }: DetailPostProps) => {
 			}
 		};
 
-		fetchServicePost();
 		fetchServiceOtherPosts();
-	}, [slug]);
-
-	if (!post) {
-		return <div>Loading...</div>;
-	}
-
-	const formattedDate = new Date(post.createdAt).toLocaleDateString('vi-VN', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
+	}, []);
 
 	const formattedDescription = post.description.replace(/\\n/g, '<br>');
 
