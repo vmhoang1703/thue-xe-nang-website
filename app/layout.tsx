@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 
@@ -46,6 +47,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={montserrat.className} suppressHydrationWarning={true}>
 				{children}
+				<Analytics />
 			</body>
 		</html>
 	);
