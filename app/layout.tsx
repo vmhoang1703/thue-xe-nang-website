@@ -6,7 +6,13 @@ import './globals.css';
 const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Thuê xe nâng tại Bà Rịa | Giá tốt 0938.333.000',
+	// title: 'Thuê xe nâng tại Bà Rịa | Giá tốt 0938.333.000',
+	title: {
+		default:
+			'Cho thuê xe nâng tại Bà Rịa | Long Anh Phát | Giá tốt 0938.333.000',
+		template:
+			'%s - Cho thuê xe nâng tại Bà Rịa | Long Anh Phát | Giá tốt 0938.333.000',
+	},
 	description:
 		'Công ty Long Anh Phát chuyên cung cấp dịch vụ cho thuê xe nâng uy tín, chất lượng tại Bà Rịa. Đa dạng loại xe nâng hàng, nâng điện, nâng dầu từ các hãng nổi tiếng. Giá cả hợp lý, nhân viên chuyên nghiệp, cam kết dịch vụ tốt nhất | Liên Hệ [ 0938.333.000 A.Điển ]',
 	keywords: [

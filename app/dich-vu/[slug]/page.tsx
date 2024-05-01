@@ -26,6 +26,25 @@ const navLinks = [
 	// { label: 'Liên hệ', path: '/lien-he' },
 ];
 
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string };
+}): Promise<Metadata> {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${params.slug}`,
+	);
+	const servicePost: ServicePost = await response.json();
+	return {
+		title: servicePost.metadata.title,
+		description: servicePost.metadata.description,
+		keywords: servicePost.metadata.keywords,
+		icons: {
+			icon: '/favicon.ico',
+		},
+	};
+}
+
 export default async function DetailServicePostPage({
 	params,
 }: {
@@ -44,23 +63,4 @@ export default async function DetailServicePostPage({
 			<Footer />
 		</main>
 	);
-}
-
-export async function generateMetadata({
-	params,
-}: {
-	params: { slug: string };
-}): Promise<Metadata> {
-	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/services/${params.slug}`,
-	);
-	const servicePost: ServicePost = await response.json();
-	return {
-		title: servicePost.metadata.title,
-		description: servicePost.metadata.description,
-		keywords: servicePost.metadata.keywords,
-		icons: {
-			icon: '/favicon.ico',
-		},
-	};
 }

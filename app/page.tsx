@@ -1,6 +1,6 @@
 import Divider from '@mui/material/Divider';
-import type { Metadata } from 'next';
 
+// import type { Metadata } from 'next';
 import AboutCompany from './components/AboutCompany';
 import CarouselTop from './components/CarouselTop';
 import ConsultingForm from './components/ConsultingForm';
@@ -13,28 +13,28 @@ import Partner from './components/Partner';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import Service from './components/Service';
 
-export const metadata: Metadata = {
-	title: 'Thuê xe nâng Bà Rịa',
-	description:
-		'Công ty Long Anh Phát chuyên cung cấp dịch vụ cho thuê xe nâng uy tín, chất lượng tại Bà Rịa. Đa dạng loại xe nâng hàng, nâng điện, nâng dầu từ các hãng nổi tiếng. Giá cả hợp lý, nhân viên chuyên nghiệp, cam kết dịch vụ tốt nhất | Liên Hệ [ 0938.333.000 A.Điển ]',
-	keywords: [
-		'thuê xe nâng Bà Rịa',
-		'cho thuê xe nâng tại Bà Rịa',
-		'dịch vụ cho thuê xe nâng Bà Rịa',
-		'thuê xe nâng giá rẻ Bà Rịa',
-		'sửa chữa xe nâng Bà Rịa',
-		'quy trình thuê xe nâng Bà Rịa',
-		'thuê xe nâng hàng Bà Rịa',
-		'thuê xe nâng điện Bà Rịa',
-		'thuê xe nâng dầu Bà Rịa',
-		'xe nâng Nissan Bà Rịa',
-		'xe nâng Komatsu Bà Rịa',
-		'công ty Long Anh Phát',
-	],
-	icons: {
-		icon: '/favicon.ico',
-	},
-};
+// export const metadata: Metadata = {
+// 	title: 'Thuê xe nâng Bà Rịa',
+// 	description:
+// 		'Công ty Long Anh Phát chuyên cung cấp dịch vụ cho thuê xe nâng uy tín, chất lượng tại Bà Rịa. Đa dạng loại xe nâng hàng, nâng điện, nâng dầu từ các hãng nổi tiếng. Giá cả hợp lý, nhân viên chuyên nghiệp, cam kết dịch vụ tốt nhất | Liên Hệ [ 0938.333.000 A.Điển ]',
+// 	keywords: [
+// 		'thuê xe nâng Bà Rịa',
+// 		'cho thuê xe nâng tại Bà Rịa',
+// 		'dịch vụ cho thuê xe nâng Bà Rịa',
+// 		'thuê xe nâng giá rẻ Bà Rịa',
+// 		'sửa chữa xe nâng Bà Rịa',
+// 		'quy trình thuê xe nâng Bà Rịa',
+// 		'thuê xe nâng hàng Bà Rịa',
+// 		'thuê xe nâng điện Bà Rịa',
+// 		'thuê xe nâng dầu Bà Rịa',
+// 		'xe nâng Nissan Bà Rịa',
+// 		'xe nâng Komatsu Bà Rịa',
+// 		'công ty Long Anh Phát',
+// 	],
+// 	icons: {
+// 		icon: '/favicon.ico',
+// 	},
+// };
 
 const navLinks = [
 	{ label: 'Trang chủ', path: '/' },

@@ -6,7 +6,7 @@ import Navbar from '../components/NavBar';
 import NewsList from '../components/NewsList';
 
 export const metadata: Metadata = {
-	title: 'Tin Tức Về Các Dịch Vụ Tại Long Anh Phát',
+	title: 'Tổng hợp tin tức',
 	description:
 		'Cập nhật tin tức mới nhất về dịch vụ cho thuê xe nâng hàng, xe nâng điện, xe nâng dầu chuyên nghiệp tại Long Anh Phát Bà Rịa Vũng Tàu. Giới thiệu các loại xe nâng uy tín như Nissan, Komatsu, Toyota. Tư vấn quy trình thuê xe nâng đơn giản, giá cả hợp lý.',
 	keywords: [
